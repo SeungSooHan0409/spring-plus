@@ -22,16 +22,23 @@ public class User extends Timestamped {
     private UserRole userRole;
     private String nickname;
 
-    public User(String email, String password, UserRole userRole) {
-        this.email = email;
-        this.password = password;
-        this.userRole = userRole;
-    }
+//    public User(String email, String password, UserRole userRole) {
+//        this.email = email;
+//        this.password = password;
+//        this.userRole = userRole;
+//    }
 
     private User(Long id, String email, UserRole userRole) {
         this.id = id;
         this.email = email;
         this.userRole = userRole;
+    }
+
+    public User(String email, String password, UserRole userRole, String nickname) {
+        this.email = email;
+        this.password = password;
+        this.userRole = userRole;
+        this.nickname = nickname;
     }
 
     public static User fromAuthUser(AuthUser authUser) {
