@@ -1,5 +1,6 @@
 package org.example.expert.domain.auth.service;
 
+import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.example.expert.config.JwtUtil;
 import org.example.expert.config.PasswordEncoder;
@@ -59,6 +60,10 @@ public class AuthService {
 
         String bearerToken = jwtUtil.createToken(user.getId(), user.getEmail(), user.getUserRole(), user.getNickname());
 
-        return new SigninResponse(bearerToken);
+        Claims claims = jwtUtil.extractClaims(bearerToken);
+
+        String nickname = claims.get("nickname", String.class);
+
+        return new SigninResponse(nickname);
     }
 }
