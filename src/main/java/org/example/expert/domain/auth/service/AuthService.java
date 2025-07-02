@@ -60,7 +60,7 @@ public class AuthService {
 
         String bearerToken = jwtUtil.createToken(user.getId(), user.getEmail(), user.getUserRole(), user.getNickname());
 
-        Claims claims = jwtUtil.extractClaims(bearerToken);
+        Claims claims = jwtUtil.extractClaims(bearerToken.substring(7).trim());
 
         String nickname = claims.get("nickname", String.class);
 
